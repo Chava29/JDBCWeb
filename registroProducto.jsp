@@ -1,8 +1,3 @@
-<%-- 
-    Document   : registroProducto
-    Created on : 6 nov. 2025, 07:56:57
-    Author     : Alumno
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.Connection"%>
