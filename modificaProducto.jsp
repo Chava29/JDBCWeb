@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="frames_estilos.css" type="text/css">
+		<link rel="stylesheet" href="styles.css" type="text/css">
         <title>Modificar producto</title>
     </head>
     <body>
