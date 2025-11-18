@@ -48,9 +48,5 @@
 			st.executeUpdate();
 			out.println("Todo se ha modificado correctamente :D");
 		%>
-		
-		<script>
-			window.location.href = "listaProducto.jsp";
-		</script>
     </body>
 </html>

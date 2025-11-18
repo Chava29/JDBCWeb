@@ -35,8 +35,5 @@
 				out.println("El elemento se ha eliminado con éxito.");
 			}
 		%>
-		<script>
-			window.location.href = "listaProducto.jsp";
-		</script>
     </body>
 </html>
