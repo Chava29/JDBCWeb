@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Modificación de proudctos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="frames_estilos.css" type="text/css">
+    </head>
+    <body>
+        <h1> Modificación de producto </h1>
+		
+		<main>
+			<form action="modificaProducto.jsp" method="put">
+				<fieldset>
+					<legend> Datos del producto </legend>        
+					<p>
+						<label for="codigo"> Código del producto: </label>
+						<input type="text" name="codigo" placeholder="Código">
+					</p>
+					<p>
+						<label for="nombre"> Nombre del producto: </label>
+						<input type="text" name="nombre" placeholder="Nombre">
+					</p>
+					<p>
+						<label for="marca"> Marca del producto: </label>
+						<input type="text" name="marca" placeholder="Marca del producto">
+					</p>
+					<p>
+						<label for="precio"> Precio del producto: </label>
+						<input type="number" name="precio" placeholder="Precio">
+					</p>
+					<button type="submit">Realizar modificación</button>
+				</fieldset>
+			</form>
+		</main>
+        
+        
+    </body>
+</html>

@@ -1,0 +1,263 @@
+/* ====== Reset básico ====== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ====== Estilo general ====== */
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-color: #e7f0fa;       /* azul muy clarito */
+    color: #1f2933;                  /* gris oscuro */
+    line-height: 1.5;
+}
+
+/* Contenedor principal (index con iframe) */
+header,
+nav,
+section,
+footer {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ====== Header ====== */
+header {
+    text-align: center;
+    padding: 16px 10px 10px;
+}
+
+header h1 {
+    font-size: 22px;
+    font-weight: 650;
+    color: #16355b;
+}
+
+/* ====== Menú ====== */
+nav {
+    margin-bottom: 10px;
+    padding: 8px 0 12px;
+    border-bottom: 1px solid #c3d4e8;
+    text-align: center;
+}
+
+nav a {
+    display: inline-block;
+    margin: 4px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid #c3d4e8;
+    background-color: #ffffff;
+    color: #16355b;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.15s, color 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+
+nav a:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+}
+
+/* ====== Iframe (index.html) ====== */
+section {
+    margin-bottom: 16px;
+}
+
+section iframe {
+    width: 100%;
+    min-height: 460px;
+    border-radius: 10px;
+    border: 1px solid #c3d4e8;
+    background-color: #ffffff;
+}
+
+/* ====== Footer ====== */
+footer {
+    text-align: center;
+    font-size: 12px;
+    padding: 10px 0 18px;
+    color: #6b7280;
+}
+
+/* ====== Páginas internas ====== */
+
+body > h1 {
+    max-width: 900px;
+    margin: 16px auto 4px;
+    padding: 0 8px;
+    font-size: 20px;
+    font-weight: 650;
+    color: #16355b;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto 20px;
+    padding: 8px;
+}
+
+/* ====== Formularios ====== */
+
+form {
+    max-width: 640px;
+    margin: 0 auto 20px;
+}
+
+/* Cuadro blanco del formulario */
+form fieldset {
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 14px 18px 18px;
+    background-color: #ffffff;
+    margin-top: 10px;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+}
+
+/* Aquí se corrige el texto "Datos del producto" dentro del cuadro */
+form legend {
+    font-weight: 600;
+    font-size: 14px;
+    padding: 0 6px;
+    margin-left: 10px;
+    color: #16355b;
+    background-color: #ffffff;  /* mismo color que el fieldset */
+}
+
+/* Etiquetas y entradas */
+form p {
+    margin-bottom: 10px;
+}
+
+form label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 3px;
+    color: #4b5563;
+}
+
+form input {
+    width: 100%;
+    padding: 7px 8px;
+    font-size: 13px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    background-color: #f9fafb;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s, background-color 0.15s;
+}
+
+form input:focus {
+    border-color: #2563eb;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.16);
+}
+
+/* Botón principal */
+button {
+    padding: 7px 16px;
+    font-size: 13px;
+    border-radius: 999px;
+    border: none;
+    background-color: #2563eb;
+    color: #ffffff;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: background-color 0.15s, box-shadow 0.15s, transform 0.05s;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.16);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* ====== Tablas (lista / eliminar productos) ====== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+}
+
+th,
+td {
+    padding: 8px 10px;
+    font-size: 13px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+    background-color: #edf2ff;
+    font-weight: 600;
+    color: #1f2933;
+}
+
+tr:nth-child(even) td {
+    background-color: #f9fafb;
+}
+
+tr:hover td {
+    background-color: #eef2ff;
+}
+
+/* Botones de eliminar / modificar, versión "un poco pro" pero sencilla */
+
+.boton-eliminar,
+.boton-modificar {
+    display: inline-block;
+    padding: 4px 11px;
+    border-radius: 999px;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.12);
+    transition: background-color 0.15s, box-shadow 0.15s, transform 0.05s;
+}
+
+/* Eliminar en rojo suave */
+.boton-eliminar {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.boton-eliminar:hover {
+    background-color: #fecaca;
+    box-shadow: 0 2px 6px rgba(185, 28, 28, 0.25);
+}
+
+.boton-eliminar:active,
+.boton-modificar:active {
+    transform: translateY(1px);
+}
+
+/* Modificar en verde suave */
+.boton-modificar {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.boton-modificar:hover {
+    background-color: #bbf7d0;
+    box-shadow: 0 2px 6px rgba(22, 101, 52, 0.25);
+}
+
+/* Texto centrado para mensajes sencillos */
+.center-text {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 14px;
+}
