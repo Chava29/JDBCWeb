@@ -5,33 +5,159 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles.css" type="text/css">
+
+        <script>
+            // Función que valida el formulario antes de enviarlo
+            function validarFormulario(event) {
+                // Evitamos que se mande de inmediato para poder ver la "pantalla de prueba"
+                if (event) {
+                    event.preventDefault();
+                }
+
+                // Limpiar mensajes anteriores
+                document.getElementById("errorCodigo").textContent = "";
+                document.getElementById("errorNombre").textContent = "";
+                document.getElementById("errorMarca").textContent = "";
+                document.getElementById("errorPrecio").textContent = "";
+                document.getElementById("resultadoPrueba").textContent = "";
+                document.getElementById("resultadoPrueba").className = "";
+
+                let formulario = document.forms["frmProducto"];
+                let codigo  = formulario["codigo"].value.trim();
+                let nombre  = formulario["nombre"].value.trim();
+                let marca   = formulario["marca"].value.trim();
+                let precio  = formulario["precio"].value.trim();
+
+                let hayErrores = false;
+
+                // =========================
+                // Validar CÓDIGO (solo letras)
+                // =========================
+                if (codigo === "") {
+                    document.getElementById("errorCodigo").textContent =
+                        "Ingresa el código del producto";
+                    hayErrores = true;
+                } else if (!/^[A-Za-z]+$/.test(codigo)) {
+                    // Solo letras de la A a la Z (mayúsculas o minúsculas)
+                    document.getElementById("errorCodigo").textContent =
+                        "El código solo debe contener letras (sin números)"; 
+                    hayErrores = true;
+                }
+
+                // Validar nombre
+                if (nombre === "") {
+                    document.getElementById("errorNombre").textContent =
+                        "Ingresa el nombre del producto";
+                    hayErrores = true;
+                }
+
+                // Validar marca
+                if (marca === "") {
+                    document.getElementById("errorMarca").textContent =
+                        "Ingresa la marca del producto";
+                    hayErrores = true;
+                }
+
+                // Validar precio
+                if (precio === "") {
+                    document.getElementById("errorPrecio").textContent =
+                        "Ingresa el precio";
+                    hayErrores = true;
+                } else if (isNaN(precio) || Number(precio) <= 0) {
+                    document.getElementById("errorPrecio").textContent =
+                        "Ingresa un precio numérico mayor a 0";
+                    hayErrores = true;
+                }
+
+                // Mensaje de "pantalla de prueba"
+                if (hayErrores) {
+                    document.getElementById("resultadoPrueba").textContent =
+                        "Prueba de validación: hay errores, corrige los campos marcados.";
+                    document.getElementById("resultadoPrueba").className = "mensaje-error";
+                    return false;
+                } else {
+                    document.getElementById("resultadoPrueba").textContent =
+                        "Prueba de validación: todos los datos son correctos. (Listo para enviar al servidor)";
+                    document.getElementById("resultadoPrueba").className = "mensaje-ok";
+
+                    // Cuando quieras que sí se mande al JSP, descomenta:
+                    // formulario.submit();
+
+                    return true;
+                }
+            }
+        </script>
+
+        <style>
+            /* Mensajes de error debajo de cada campo (NEGRO) */
+            .error-campo {
+                color: black;              /* Negro */
+                font-size: 0.85rem;
+                margin-left: 5px;
+            }
+
+            /* Mensaje general de prueba cuando hay errores (NEGRO) */
+            .mensaje-error {
+                margin-top: 15px;
+                padding: 10px;
+                border: 1px solid black;
+                color: black;
+                background-color: #f5f5f5; /* gris claro */
+            }
+
+            /* Mensaje general cuando todo está correcto */
+            .mensaje-ok {
+                margin-top: 15px;
+                padding: 10px;
+                border: 1px solid #008000;
+                color: #008000;
+                background-color: #f0fff0;
+            }
+        </style>
     </head>
     <body>
         <h1> Registro de producto </h1>
         
-		<main>
-			<form action="registroProducto.jsp" method="post">
-				<fieldset>
-					<legend> Datos del producto </legend>        
-					<p>
-						<label for="codigo"> Código del producto: </label>
-						<input type="text" name="codigo" placeholder="Código">
-					</p>
-					<p>
-						<label for="nombre"> Nombre del producto: </label>
-						<input type="text" name="nombre" placeholder="Nombre">
-					</p>
-					<p>
-						<label for="marca"> Marca del producto: </label>
-						<input type="text" name="marca" placeholder="Marca del producto">
-					</p>
-					<p>
-						<label for="precio"> Precio del producto: </label>
-						<input type="number" name="precio" placeholder="Precio">
-					</p>
-					<button type="submit">Registrar producto</button>
-				</fieldset>
-			</form>
-		</main>
+        <main>
+            <!-- name para poder usar document.forms["frmProducto"] -->
+            <form name="frmProducto"
+                  action="registroProducto.jsp"
+                  method="post"
+                  onsubmit="return validarFormulario(event);">
+
+                <fieldset>
+                    <legend> Datos del producto </legend>        
+
+                    <p>
+                        <label for="codigo"> Código del producto: </label>
+                        <input type="text" id="codigo" name="codigo" placeholder="Código">
+                        <span id="errorCodigo" class="error-campo"></span>
+                    </p>
+
+                    <p>
+                        <label for="nombre"> Nombre del producto: </label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+                        <span id="errorNombre" class="error-campo"></span>
+                    </p>
+
+                    <p>
+                        <label for="marca"> Marca del producto: </label>
+                        <input type="text" id="marca" name="marca" placeholder="Marca del producto">
+                        <span id="errorMarca" class="error-campo"></span>
+                    </p>
+
+                    <p>
+                        <label for="precio"> Precio del producto: </label>
+                        <input type="number" id="precio" name="precio" placeholder="Precio" step="0.01">
+                        <span id="errorPrecio" class="error-campo"></span>
+                    </p>
+
+                    <button type="submit">Registrar producto</button>
+                </fieldset>
+            </form>
+
+            <!-- “Pantalla de prueba” de validación -->
+            <div id="resultadoPrueba"></div>
+        </main>
     </body>
 </html>
